@@ -1,0 +1,148 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Empty.master.cs" Inherits="PrestoPay.Empty" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>PrestoPay</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+     <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/nav-bootstrap.css" rel="stylesheet" />
+    <link href="Content/page-tweak.css" rel="stylesheet" />
+    <script src="Scripts/jquery-1.9.1.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <link href="Content/popout.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+    <script src="Scripts/jquery-ui-1.12.1.js"></script>
+    
+  <script>
+      $(function () {
+          $(".cpb-subPanel-alert").draggable({ handle: "div.cpb-subPanel-heading-alert" });
+          $("div.cpb-subPanel-alert, div.cpb-subPanel-heading-alert").disableSelection();
+
+          $(".cpb-subPanel").draggable({ handle: "div.cpb-subPanel-heading" });
+          $("div.cpb-subPanel, div.cpb-subPanel-heading").disableSelection();
+
+
+      });
+  </script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <style>
+       
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        
+
+    </style>
+
+</head>
+<body>
+    <form id="from_masterpage" runat="server">
+        <div>
+            <asp:ScriptManager ID="ScriptManager_Master" EnablePageMethods="true" runat="server"></asp:ScriptManager>
+
+            <asp:ContentPlaceHolder ID="EmptyMasterPage" runat="server">
+            </asp:ContentPlaceHolder>
+
+
+             <asp:UpdatePanel ID="UpdatePanelPopout" runat="server">
+            <ContentTemplate>
+        <asp:Panel ID="Popout_Alert_Panel" runat="server" Visible="false" CssClass="cpb-mainPanel-alert">
+            <div class="panel panel-info cpb-subPanel-alert">
+                <div class="panel-heading cpb-subPanel-heading-alert " style="padding: 7px 15px;">
+                    <asp:Image ID="Popout_Alert_Image" runat="server" Width="25" Height="25" CssClass="cpb-title inner-image-margin" />
+                    <asp:Label ID="Popout_Alert_Title" runat="server" Text="Success" CssClass="cpb-title cpb-small-margin"></asp:Label>
+                </div>
+                <div class="panel-body cpb-subPanel-body-alert">
+                    <div class="popout-sub">
+
+                        <div class="inner-text-margin">
+                            <asp:Label ID="Popout_Alert_Message" runat="server" Text="" CssClass="left-space"></asp:Label>
+                        </div>
+
+                        <div class="row inner-buttons" id="Popout_Alert_OK" visible="false" runat="server">
+                            <asp:ContentPlaceHolder ID="Popout_Alert_OkButtonContent" runat="server">
+                            </asp:ContentPlaceHolder>
+                           
+
+
+                        </div>
+
+                        <div class="row inner-buttons-two" id="Popout_Alert_YN" visible="false" runat="server">
+                            <asp:ContentPlaceHolder ID="Popout_YesNoButton" runat="server">
+                            </asp:ContentPlaceHolder>
+
+                            
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+        </asp:Panel>
+
+        <asp:Panel ID="Popout_Prompt_Panel" runat="server" Visible="false" CssClass="cpb-mainPanel">
+            <div class="panel panel-info cpb-subPanel">
+                <div class="panel-heading cpb-subPanel-heading " style="padding: 7px 15px;">
+                    <img src="Images/info.png" width="25" height="25" class="cpb-title inner-image-margin" />
+                    <asp:Label ID="Popout_Prompt_Title" runat="server" Text="Success" CssClass="cpb-title  cpb-small-margin"></asp:Label>
+
+                </div>
+                <div class="panel-body cpb-subPanel-body">
+
+                    <div class="popout-main">
+
+                        <div class="row">
+
+                            <div class="inner-prompt-text-margin">
+                                <asp:Label ID="Popout_Prompt_Message" runat="server" Text="Success" CssClass="left-space"></asp:Label>
+
+                            </div>
+
+
+
+
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <div runat="server" class="inner-prompt-text-margin " id="Popout_Prompt_TextboxDiv">
+
+
+                                        <asp:ContentPlaceHolder ID="Popout_Textbox" runat="server">
+                                        </asp:ContentPlaceHolder>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="row inner-buttons-submit">
+                    <asp:ContentPlaceHolder ID="Popout_SubmitAndCancelButton" runat="server">
+                    </asp:ContentPlaceHolder>
+
+                   
+
+                </div>
+            </div>
+        </asp:Panel>
+
+                </ContentTemplate>
+            </asp:UpdatePanel>
+
+
+
+        </div>
+    </form>
+</body>
+</html>

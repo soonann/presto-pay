@@ -1,0 +1,99 @@
+﻿.PrestoInfo {
+    background-color: #9768D1;
+    
+}
+
+
+.whiteColor {
+    color: white;
+}
+
+.purpleButton {
+    background-color: #553285;
+    color: white !important;
+}
+
+.purpleButton:hover {
+        background-color: #36175E;
+     
+}
+
+.section {
+    border: solid 1px black;
+}
+
+.container-padding {
+    padding: 10px;
+}
+
+.bottomMargin {
+    margin-bottom: 30px;
+}
+
+.fullWidth {
+    width: 100%;
+}
+
+
+.cancelButton{
+    margin-left:10px;
+
+}
+
+.navBodyGap{
+
+    height:200px;
+}
+
+
+.clearMargin{
+    margin:0;
+    padding:0;
+
+}
+
+.boldText{
+
+    font-weight: bold;
+    font-size:20px;
+
+}
+
+.boldOnly {
+    font-weight: bold;
+}
+
+.table-noBorder > thead > tr > th,
+.table-noBorder > tbody > tr > th,
+.table-noBorder > tfoot > tr > th,
+.table-noBorder > thead > tr > td,
+.table-noBorder > tbody > tr > td,
+.table-noBorder > tfoot > tr > td {
+
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+
+
+}
+
+
+.subTotalRow {
+    border-top: solid 1px #ddd;
+    border-bottom: solid 1px #ddd;
+}
+
+.grandTotalRow {
+    border-bottom: solid 1px #ddd;
+}
+
+.leftAlignText{
+    text-align:left;
+    padding-left:30px !important;
+    
+}
+
+.rightAlignText {
+    text-align: right;
+    padding-right: 30px !important;
+}

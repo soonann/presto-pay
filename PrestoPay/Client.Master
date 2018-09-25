@@ -1,0 +1,260 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Client.master.cs" Inherits="PrestoPay.Client"  %>
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>PrestoPay</title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/nav-bootstrap.css" rel="stylesheet" />
+    <link href="Content/popout.css" rel="stylesheet" />   
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+     <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+      <script src="Scripts/jquery-ui-1.12.1.js"></script>
+
+    <script>
+      $( function() {
+        $( ".cpb-subPanel-alert" ).draggable({ handle: "div.cpb-subPanel-heading-alert" });
+          $("div.cpb-subPanel-alert, div.cpb-subPanel-heading-alert").disableSelection();
+
+          $(".cpb-subPanel").draggable({ handle: "div.cpb-subPanel-heading" });
+          $("div.cpb-subPanel, div.cpb-subPanel-heading").disableSelection();
+
+   
+          });
+      </script>
+
+
+
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="MasterPageForm" runat="server">
+
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">PrestoPay</a>
+                </div>
+                <div class="collapse navbar-collapse overflowfix" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="DashBoard.aspx" class="">Dashboard</a></li>
+
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Fund<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="PrestoWallet.aspx">Presto Wallet</a></li>
+
+                                <li><a href="FundTransfer.aspx">Pay & Request</a></li>
+                                <li runat="server" id="Nav_presqr"><a href="PrestoQrPay.aspx">QR Pay</a></li>
+
+
+                            </ul>
+                        </li>
+
+                        <li><a href="Transactions.aspx">Activity</a></li>
+
+                             <%--    // Start of modification by OSL
+        <li  runat="server" id="Nav_budgeting"><a href="#">Budgeting</a></li>--%>
+
+        <li runat="server" id="Nav_budget" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Budgeting Center<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+        <li runat="server" id="Nav_budget1"><a href="BudgetSetUp.aspx">Set Up My Budget</a></li>
+        <li runat="server" id="Nav_budget2"><a href="BudgetSummary.aspx">Show My Budget Summary</a></li>
+        <li runat="server" id="Nav_budget3"><a href="BudgetCenterDashBoard.aspx">Show My Budget DashBoard</a></li>
+        </ul>
+        </li>
+<%--    // End of modification by OSL--%>
+
+        <%--    // Start of modification by OSL--%>
+        <li runat="server" id="Nav_CategoriseTransaction" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Categorise Transactions<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+        <li runat="server" id="Nav_CategoriseTransaction1"><a href="CategorisePersonalTransactionIntoBudgetCenter.aspx">Add Personal Cash Transactions</a></li>
+        <li runat="server" id="Nav_CategoriseTransaction2"><a href="CategorisePrestoPayTransactionIntoBudgetCenter.aspx">Sort PrestoPay Transactions</a></li>
+        </ul>
+        </li>
+<%--    // End of modification by OSL--%>
+
+
+        
+
+<%--    // Start of modification by OSL
+        <li  runat="server" id="Nav_loans" ><a href="PpBizLoanHome.aspx">Loans</a></li>--%>
+
+        <li runat="server" id="Nav_loans" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Business Loans<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+        <li runat="server" id="Nav_loans1"><a href="PpBizLoanHome.aspx">Business Loan Information</a></li>
+        <li runat="server" id="Nav_loans2"><a href="PpBizLoanApplicationPage.aspx">Apply For Business Loans</a></li>
+        <li runat="server" id="Nav_loans3"><a href="PpBizLoanSummary.aspx">My Business Loan Summary</a></li>
+        </ul>
+        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right removeRightSpace">
+                        <li style="padding-left:7px">
+                            <a href="#">
+                                
+                                <span class=""><img class="" src="Images/wallet.png" width="15" height="15" style="position:relative; left:-7px;top:-2px;"/>SGD<span class="nav-icon-padding" runat="server" id="Nav_Money"></span></span>
+                                
+
+
+                            </a>   
+
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="glyphicon glyphicon-briefcase" runat="server" id="Nav_business"></span>
+                                <span class="glyphicon glyphicon-user" runat="server" id="Nav_personal"></span>
+                                <span class="nav-icon-padding" runat="server" id="Nav_userName"></span>
+
+
+                            </a>
+
+                        </li>
+                        <li class="logoutButtonLi">
+                            <button runat="server"  type="button" class="none logoutButton" id="Nav_signout">
+                                <span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Log Out 
+
+                            </button>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <asp:ScriptManager ID="ScriptManager_Master" EnablePageMethods="true" runat="server"></asp:ScriptManager>
+
+
+        <asp:ContentPlaceHolder ID="clientBody" runat="server">
+        </asp:ContentPlaceHolder>
+
+
+        <asp:UpdatePanel ID="UpdatePanelPopout" runat="server">
+            <ContentTemplate>
+        <asp:Panel ID="Popout_Alert_Panel" runat="server" Visible="false" CssClass="cpb-mainPanel-alert">
+            <div class="panel panel-info cpb-subPanel-alert">
+                <div class="panel-heading cpb-subPanel-heading-alert " style="padding: 7px 15px;">
+                    <asp:Image ID="Popout_Alert_Image" runat="server" Width="25" Height="25" CssClass="cpb-title inner-image-margin" />
+                    <asp:Label ID="Popout_Alert_Title" runat="server" Text="Success" CssClass="cpb-title cpb-small-margin"></asp:Label>
+                </div>
+                <div class="panel-body cpb-subPanel-body-alert">
+                    <div class="popout-sub">
+
+                        <div class="inner-text-margin">
+                            <asp:Label ID="Popout_Alert_Message" runat="server" Text="" CssClass="left-space"></asp:Label>
+                        </div>
+
+                        <div class="row inner-buttons" id="Popout_Alert_OK" visible="false" runat="server">
+                            <asp:ContentPlaceHolder ID="Popout_Alert_OkButtonContent" runat="server">
+                            </asp:ContentPlaceHolder>
+                           
+
+
+                        </div>
+
+                        <div class="row inner-buttons-two" id="Popout_Alert_YN" visible="false" runat="server">
+                            <asp:ContentPlaceHolder ID="Popout_YesNoButton" runat="server">
+                            </asp:ContentPlaceHolder>
+
+                            
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+        </asp:Panel>
+
+        <asp:Panel ID="Popout_Prompt_Panel" runat="server" Visible="false" CssClass="cpb-mainPanel">
+            <div class="panel panel-info cpb-subPanel">
+                <div class="panel-heading cpb-subPanel-heading " style="padding: 7px 15px;">
+                    <img src="Images/info.png" width="25" height="25" class="cpb-title inner-image-margin" />
+                    <asp:Label ID="Popout_Prompt_Title" runat="server" Text="Success" CssClass="cpb-title  cpb-small-margin"></asp:Label>
+
+                </div>
+                <div class="panel-body cpb-subPanel-body">
+
+                    <div class="popout-main">
+
+                        <div class="row">
+
+                            <div class="inner-prompt-text-margin">
+                                <asp:Label ID="Popout_Prompt_Message" runat="server" Text="Success" CssClass="left-space"></asp:Label>
+
+                            </div>
+
+
+
+
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <div runat="server" class="inner-prompt-text-margin " id="Popout_Prompt_TextboxDiv">
+
+
+                                        <asp:ContentPlaceHolder ID="Popout_Textbox" runat="server">
+                                        </asp:ContentPlaceHolder>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="row inner-buttons-submit">
+                    <asp:ContentPlaceHolder ID="Popout_SubmitAndCancelButton" runat="server">
+                    </asp:ContentPlaceHolder>
+
+                   
+
+                </div>
+            </div>
+        </asp:Panel>
+
+                </ContentTemplate>
+            </asp:UpdatePanel>
+
+
+
+
+
+
+
+        <div class="footerSpace">
+        </div>
+
+        <div class="navbar navbar-default navbar-fixed-bottom">
+            <div class="container">
+            </div>
+
+        </div>
+
+
+    </form>
+</body>
+</html>

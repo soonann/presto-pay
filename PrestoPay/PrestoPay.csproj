@@ -1,0 +1,642 @@
+﻿<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{60D96A94-7407-49D3-9638-170D51FE7076}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PrestoPay</RootNamespace>
+    <AssemblyName>PrestoPay</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=17.1.1.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.17.1.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AddCreditCard.aspx" />
+    <Content Include="AddPayee.aspx" />
+    <Content Include="AddPayeePage.aspx" />
+    <Content Include="App_Data\PrestoDb.mdf" />
+    <Content Include="App_Data\PrestoDb_log.ldf">
+      <DependentUpon>PrestoDb.mdf</DependentUpon>
+    </Content>
+    <Content Include="BudgetAndTransactions.aspx" />
+    <Content Include="BudgetCenterDashBoard.aspx" />
+    <Content Include="BudgetDebtRepaymentDetails.aspx" />
+    <Content Include="BudgetDetails.aspx" />
+    <Content Include="BudgetFixedCostDetails.aspx" />
+    <Content Include="BudgetFlexSpendingDetails.aspx" />
+    <Content Include="BudgetPriorityGoalsDetails.aspx" />
+    <Content Include="BudgetSetUp.aspx" />
+    <Content Include="BudgetSummary.aspx" />
+    <Content Include="CategorisePersonalTransactionIntoBudgetCenter.aspx" />
+    <Content Include="CategorisePrestoPayTransactionIntoBudgetCenter.aspx" />
+    <Content Include="CategorisePrestoPayTransactionIntoBudgetCenterDetails.aspx" />
+    <Content Include="Content\dataTables.bootstrap.css" />
+    <Content Include="Content\dataTables.bootstrap.min.css" />
+    <Content Include="Content\jquery.dataTables.css" />
+    <Content Include="Content\jquery.dataTables.min.css" />
+    <Content Include="Content\popout.css" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="DashBoard.aspx" />
+    <Content Include="daterangepicker\daterangepicker.css" />
+    <Content Include="daterangepicker\daterangepicker.js" />
+    <Content Include="daterangepicker\drp.png" />
+    <Content Include="daterangepicker\jquery.dataTables.yadcf.css" />
+    <Content Include="daterangepicker\jquery.dataTables.yadcf.js" />
+    <Content Include="daterangepicker\moment.js" />
+    <Content Include="daterangepicker\moment.min.js" />
+    <Content Include="Images\admin.png" />
+    <Content Include="Images\alert.png" />
+    <Content Include="Images\building-256 %281%29.png" />
+    <Content Include="Images\building.png" />
+    <Content Include="Images\business-contact-256 %281%29.png" />
+    <Content Include="Images\business.png" />
+    <Content Include="Images\conference-256 %281%29.png" />
+    <Content Include="Images\conference.png" />
+    <Content Include="Images\credit-card.png" />
+    <Content Include="Images\download.png" />
+    <Content Include="Images\Dual Ring.gif" />
+    <Content Include="Images\error.png" />
+    <Content Include="Images\info.png" />
+    <Content Include="Images\qn.png" />
+    <Content Include="Images\Rolling.gif" />
+    <Content Include="Images\scannerframe.png" />
+    <Content Include="Images\success.png" />
+    <Content Include="Images\wallet.png" />
+    <Content Include="Images\walleticon.png" />
+    <Content Include="Notification.aspx" />
+    <Content Include="packages.config" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="PageNotFound.aspx" />
+    <Content Include="PaymentGateway.aspx" />
+    <Content Include="PopulateTransaction.aspx" />
+    <Content Include="PpBizLoanApplicationPage.aspx" />
+    <Content Include="PpBizLoanDetails.aspx" />
+    <Content Include="PpBizLoanHome.aspx" />
+    <Content Include="PpBizLoanRepaymentDetails.aspx" />
+    <Content Include="PpBizLoanSummary.aspx" />
+    <Content Include="PrestoPayAnalysis.aspx" />
+    <Content Include="PrestoWallet.aspx" />
+    <Content Include="RequestPage.aspx" />
+    <Content Include="Scripts\execScanner.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Empty.Master" />
+    <Content Include="Client.Master" />
+    <Content Include="daterangepicker\daterangepicker.scss" />
+    <None Include="Properties\PublishProfiles\PrestoPay - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\PrestoPay - Web Deploy.pubxml" />
+    <None Include="Scripts\jquery-1.12.4.intellisense.js" />
+    <Content Include="Scripts\jquery-1.12.4.js" />
+    <Content Include="Scripts\jquery-1.12.4.min.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <Content Include="Scripts\jquery-1.12.4.min.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\nav-bootstrap.css" />
+    <Content Include="Content\page-tweak.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Images\bizLoanInfo.PNG" />
+    <Content Include="Login.aspx" />
+    <Content Include="PrestoQrPay.aspx" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <Content Include="Scripts\jquery.dataTables.js" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\QrCodeReader\alignpat.js" />
+    <Content Include="Scripts\QrCodeReader\bitmat.js" />
+    <Content Include="Scripts\QrCodeReader\bmparser.js" />
+    <Content Include="Scripts\QrCodeReader\datablock.js" />
+    <Content Include="Scripts\QrCodeReader\databr.js" />
+    <Content Include="Scripts\QrCodeReader\datamask.js" />
+    <Content Include="Scripts\QrCodeReader\decoder.js" />
+    <Content Include="Scripts\QrCodeReader\detector.js" />
+    <Content Include="Scripts\QrCodeReader\errorlevel.js" />
+    <Content Include="Scripts\QrCodeReader\findpat.js" />
+    <Content Include="Scripts\QrCodeReader\formatinf.js" />
+    <Content Include="Scripts\QrCodeReader\gf256.js" />
+    <Content Include="Scripts\QrCodeReader\gf256poly.js" />
+    <Content Include="Scripts\QrCodeReader\grid.js" />
+    <Content Include="Scripts\QrCodeReader\qrcode.js" />
+    <Content Include="Scripts\QrCodeReader\rsdecoder.js" />
+    <Content Include="Scripts\QrCodeReader\version.js" />
+    <Content Include="Settings.aspx" />
+    <Content Include="SignUp.aspx" />
+    <Content Include="FundTransfer.aspx" />
+    <Content Include="Transactions.aspx" />
+    <Content Include="Transfer.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddCreditCard.aspx.cs">
+      <DependentUpon>AddCreditCard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddCreditCard.aspx.designer.cs">
+      <DependentUpon>AddCreditCard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddPayeePage.aspx.cs">
+      <DependentUpon>AddPayeePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddPayeePage.aspx.designer.cs">
+      <DependentUpon>AddPayeePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BudgetAndTransactions.aspx.cs">
+      <DependentUpon>BudgetAndTransactions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BudgetAndTransactions.aspx.designer.cs">
+      <DependentUpon>BudgetAndTransactions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BudgetCenterDashBoard.aspx.cs">
+      <DependentUpon>BudgetCenterDashBoard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BudgetCenterDashBoard.aspx.designer.cs">
+      <DependentUpon>BudgetCenterDashBoard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BudgetDebtRepaymentDetails.aspx.cs">
+      <DependentUpon>BudgetDebtRepaymentDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BudgetDebtRepaymentDetails.aspx.designer.cs">
+      <DependentUpon>BudgetDebtRepaymentDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BudgetDetails.aspx.cs">
+      <DependentUpon>BudgetDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BudgetDetails.aspx.designer.cs">
+      <DependentUpon>BudgetDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BudgetFixedCostDetails.aspx.cs">
+      <DependentUpon>BudgetFixedCostDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BudgetFixedCostDetails.aspx.designer.cs">
+      <DependentUpon>BudgetFixedCostDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BudgetFlexSpendingDetails.aspx.cs">
+      <DependentUpon>BudgetFlexSpendingDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BudgetFlexSpendingDetails.aspx.designer.cs">
+      <DependentUpon>BudgetFlexSpendingDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BudgetPriorityGoalsDetails.aspx.cs">
+      <DependentUpon>BudgetPriorityGoalsDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BudgetPriorityGoalsDetails.aspx.designer.cs">
+      <DependentUpon>BudgetPriorityGoalsDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BudgetSetUp.aspx.cs">
+      <DependentUpon>BudgetSetUp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BudgetSetUp.aspx.designer.cs">
+      <DependentUpon>BudgetSetUp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BudgetSummary.aspx.cs">
+      <DependentUpon>BudgetSummary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BudgetSummary.aspx.designer.cs">
+      <DependentUpon>BudgetSummary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CategorisePersonalTransactionIntoBudgetCenter.aspx.cs">
+      <DependentUpon>CategorisePersonalTransactionIntoBudgetCenter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CategorisePersonalTransactionIntoBudgetCenter.aspx.designer.cs">
+      <DependentUpon>CategorisePersonalTransactionIntoBudgetCenter.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CategorisePrestoPayTransactionIntoBudgetCenter.aspx.cs">
+      <DependentUpon>CategorisePrestoPayTransactionIntoBudgetCenter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CategorisePrestoPayTransactionIntoBudgetCenter.aspx.designer.cs">
+      <DependentUpon>CategorisePrestoPayTransactionIntoBudgetCenter.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CategorisePrestoPayTransactionIntoBudgetCenterDetails.aspx.cs">
+      <DependentUpon>CategorisePrestoPayTransactionIntoBudgetCenterDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CategorisePrestoPayTransactionIntoBudgetCenterDetails.aspx.designer.cs">
+      <DependentUpon>CategorisePrestoPayTransactionIntoBudgetCenterDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client.Master.cs">
+      <DependentUpon>Client.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Client.Master.designer.cs">
+      <DependentUpon>Client.Master</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard.aspx.cs">
+      <DependentUpon>DashBoard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DashBoard.aspx.designer.cs">
+      <DependentUpon>DashBoard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Api Entites\APIErrorLog.cs" />
+    <Compile Include="Empty.Master.cs">
+      <DependentUpon>Empty.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Empty.Master.designer.cs">
+      <DependentUpon>Empty.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Encrypt\Crypter.cs" />
+    <Compile Include="Encrypt\CryptResult.cs" />
+    <Compile Include="Entity\Api Entites\APIErrorLogDAO.cs" />
+    <Compile Include="Entity\Api Entites\BusinessApiKey.cs" />
+    <Compile Include="Entity\Api Entites\BusinessApiKeyDAO.cs" />
+    <Compile Include="Entity\Api Entites\PaymentInformation.cs" />
+    <Compile Include="Entity\BL Entities\PaymentBL.cs" />
+    <Compile Include="Entity\ChartDAO.cs" />
+    <Compile Include="Entity\DB Entities\Account.cs" />
+    <Compile Include="Entity\DB Entities\AccountDAO.cs" />
+    <Compile Include="Entity\DB Entities\Admin.cs" />
+    <Compile Include="Entity\DB Entities\AdminDAO.cs" />
+    <Compile Include="Entity\DB Entities\AudEntity.cs" />
+    <Compile Include="Entity\DB Entities\Bank.cs" />
+    <Compile Include="Entity\DB Entities\BankDAO.cs" />
+    <Compile Include="Entity\DB Entities\BudgetDashBoard.cs" />
+    <Compile Include="Entity\DB Entities\BudgetDashBoardDAO.cs" />
+    <Compile Include="Entity\DB Entities\BudgetExpenditure.cs" />
+    <Compile Include="Entity\DB Entities\BudgetExpenditureCategory.cs" />
+    <Compile Include="Entity\DB Entities\BudgetExpenditureCategoryDAO.cs" />
+    <Compile Include="Entity\DB Entities\BudgetExpenditureDAO.cs" />
+    <Compile Include="Entity\DB Entities\BudgetExpenditurePersonalTransactionDAO.cs" />
+    <Compile Include="Entity\DB Entities\BudgetExpenditurePrestopayTransactionDAO.cs" />
+    <Compile Include="Entity\DB Entities\BudgetIncome.cs" />
+    <Compile Include="Entity\DB Entities\BudgetIncomeCategory.cs" />
+    <Compile Include="Entity\DB Entities\BudgetIncomeCategoryDAO.cs" />
+    <Compile Include="Entity\DB Entities\BudgetIncomeDAO.cs" />
+    <Compile Include="Entity\DB Entities\BudgetSetUpExpenditure.cs" />
+    <Compile Include="Entity\DB Entities\BudgetSetUpExpenditureDAO.cs" />
+    <Compile Include="Entity\DB Entities\BudgetSetUpIncome.cs" />
+    <Compile Include="Entity\DB Entities\BudgetSetUpIncomeDAO.cs" />
+    <Compile Include="Entity\DB Entities\Business.cs" />
+    <Compile Include="Entity\DB Entities\BusinessDAO.cs" />
+    <Compile Include="Entity\DB Entities\BusinessSales.cs" />
+    <Compile Include="Entity\DB Entities\BusinessSalesDAO.cs" />
+    <Compile Include="Entity\DB Entities\CategorisedTransaction.cs" />
+    <Compile Include="Entity\DB Entities\CategorisedTransactionDAO.cs" />
+    <Compile Include="Entity\DB Entities\CreditCard.cs" />
+    <Compile Include="Entity\DB Entities\CreditCardDAO.cs" />
+    <Compile Include="Entity\DB Entities\Employees.cs" />
+    <Compile Include="Entity\DB Entities\EmployeesDAO.cs" />
+    <Compile Include="Entity\DB Entities\Item.cs" />
+    <Compile Include="Entity\DB Entities\ItemDAO.cs" />
+    <Compile Include="Entity\DB Entities\Loan.cs" />
+    <Compile Include="Entity\DB Entities\LoanApplicationDAO.cs" />
+    <Compile Include="Entity\DB Entities\LoanCalculationTable.cs" />
+    <Compile Include="Entity\DB Entities\LoanDetailsDAO.cs" />
+    <Compile Include="Entity\DB Entities\LoanRepayment.cs" />
+    <Compile Include="Entity\DB Entities\LoanRepaymentDAO.cs" />
+    <Compile Include="Entity\DB Entities\LoanSummaryDAO.cs" />
+    <Compile Include="Entity\DB Entities\Order.cs" />
+    <Compile Include="Entity\DB Entities\OrderDAO.cs" />
+    <Compile Include="Entity\DB Entities\QrPayAmt.cs" />
+    <Compile Include="Entity\DB Entities\QrPayAmtDAO.cs" />
+    <Compile Include="Entity\DB Entities\QrPayKey.cs" />
+    <Compile Include="Entity\DB Entities\QrPayKeyDAO.cs" />
+    <Compile Include="Entity\DB Entities\Request.cs" />
+    <Compile Include="Entity\DB Entities\RequestDAO.cs" />
+    <Compile Include="Entity\JsonResult.cs" />
+    <Compile Include="Entity\Api Entites\ReturnCall.cs" />
+    <Compile Include="Entity\MiniTable.cs" />
+    <Compile Include="Entity\RequestViewBusiness.cs" />
+    <Compile Include="Entity\RequestViewPersonal.cs" />
+    <Compile Include="Entity\TransactionTable.cs" />
+    <Compile Include="Entity\View Entities\Payment.cs" />
+    <Compile Include="Entity\RandomKeyGenerator.cs" />
+    <Compile Include="Entity\DB Entities\Transaction.cs" />
+    <Compile Include="Entity\DB Entities\TransactionDAO.cs" />
+    <Compile Include="Entity\TransactionDetailTable.cs" />
+    <Compile Include="Entity\User.cs" />
+    <Compile Include="Hash\Hashing.cs" />
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Notification.aspx.cs">
+      <DependentUpon>Notification.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Notification.aspx.designer.cs">
+      <DependentUpon>Notification.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageNotFound.aspx.cs">
+      <DependentUpon>PageNotFound.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageNotFound.aspx.designer.cs">
+      <DependentUpon>PageNotFound.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentGateway.aspx.cs">
+      <DependentUpon>PaymentGateway.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaymentGateway.aspx.designer.cs">
+      <DependentUpon>PaymentGateway.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PopulateTransaction.aspx.cs">
+      <DependentUpon>PopulateTransaction.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PopulateTransaction.aspx.designer.cs">
+      <DependentUpon>PopulateTransaction.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PpBizLoanApplicationPage.aspx.cs">
+      <DependentUpon>PpBizLoanApplicationPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PpBizLoanApplicationPage.aspx.designer.cs">
+      <DependentUpon>PpBizLoanApplicationPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PpBizLoanDetails.aspx.cs">
+      <DependentUpon>PpBizLoanDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PpBizLoanDetails.aspx.designer.cs">
+      <DependentUpon>PpBizLoanDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PpBizLoanHome.aspx.cs">
+      <DependentUpon>PpBizLoanHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PpBizLoanHome.aspx.designer.cs">
+      <DependentUpon>PpBizLoanHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PpBizLoanRepaymentDetails.aspx.cs">
+      <DependentUpon>PpBizLoanRepaymentDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PpBizLoanRepaymentDetails.aspx.designer.cs">
+      <DependentUpon>PpBizLoanRepaymentDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PpBizLoanSummary.aspx.cs">
+      <DependentUpon>PpBizLoanSummary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PpBizLoanSummary.aspx.designer.cs">
+      <DependentUpon>PpBizLoanSummary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PrestoPayAnalysis.aspx.cs">
+      <DependentUpon>PrestoPayAnalysis.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PrestoPayAnalysis.aspx.designer.cs">
+      <DependentUpon>PrestoPayAnalysis.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PrestoQrPay.aspx.cs">
+      <DependentUpon>PrestoQrPay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PrestoQrPay.aspx.designer.cs">
+      <DependentUpon>PrestoQrPay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PrestoWallet.aspx.cs">
+      <DependentUpon>PrestoWallet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PrestoWallet.aspx.designer.cs">
+      <DependentUpon>PrestoWallet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestPage.aspx.cs">
+      <DependentUpon>RequestPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RequestPage.aspx.designer.cs">
+      <DependentUpon>RequestPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.aspx.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Settings.aspx.designer.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SignUp.aspx.cs">
+      <DependentUpon>SignUp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SignUp.aspx.designer.cs">
+      <DependentUpon>SignUp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FundTransfer.aspx.cs">
+      <DependentUpon>FundTransfer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FundTransfer.aspx.designer.cs">
+      <DependentUpon>FundTransfer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Transactions.aspx.cs">
+      <DependentUpon>Transactions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Transactions.aspx.designer.cs">
+      <DependentUpon>Transactions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Transfer.aspx.cs">
+      <DependentUpon>Transfer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Transfer.aspx.designer.cs">
+      <DependentUpon>Transfer.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TempImages\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>63498</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:4000/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
